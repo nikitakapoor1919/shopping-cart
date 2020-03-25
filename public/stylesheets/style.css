@@ -10,3 +10,8 @@
     font-weight: bold;
     font-size: 16px;
 }
+.form{
+    border: 1px black solid;
+    padding:10px;
+    height: 400px;
+}
