@@ -9,14 +9,15 @@
         </div>
         {{/if}}
         <form  action="/user/signup" method="POST">
-        <br>
             <div class="form-group">
                 <label for="email" >E-mail</label>
-                <input type="text"  id="email" name="email" class="form=control">
+                <br>
+                <input type="text" id="email"  name="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="password" >Password</label>
-                <input type="password" id="password"  name="password" class="form=control">
+                <br>
+                <input type="password" id="password"  name="password" class="form-control">
             </div>
             <br>
             <input type="hidden" name="_csrf"  value="{{csrfToken}}">

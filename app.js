@@ -7,6 +7,9 @@ var cookieParser=require('cookie-parser')
 var bodyParser=require('body-parser')
 var passport=require('passport')
 var flash=require('connect-flash')
+var expressValidator = require('express-validator');
+
+
 
 var routes = require('./routes/index');
 var app=express()
@@ -20,6 +23,7 @@ app.set('view engine', '.hbs');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extented:true}))
+app.use(expressValidator())
 app.use(cookieParser())
 app.use(session({secret:'mylongsecret',resave:false,saveUninitialized:false}))
 app.use(flash())
