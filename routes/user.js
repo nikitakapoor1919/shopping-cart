@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
+var Cart=require('../models/cart')
 
 var csrfProtectionToken = csrf();
 router.use(csrfProtectionToken);
@@ -41,7 +42,7 @@ router.post('/signin', passport.authenticate('local.signin', {
   {
     var oldUrl=req.session.oldUrl
     req.session.oldUrl=null  
-    req.redirect(oldUrl)
+    res.redirect(oldUrl)
   }
   else{
     res.redirect('/user/profile')
@@ -50,7 +51,8 @@ router.post('/signin', passport.authenticate('local.signin', {
 
 /* GET : user profile page. */
 router.get('/profile', isLoggedIn, function(req, res, next){
-  res.render('user/profile');
+  var cart=new Cart(req.session.cart ? req.session.cart:{})
+  res.render('user/profile', {products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next){

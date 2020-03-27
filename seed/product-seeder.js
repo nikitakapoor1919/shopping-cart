@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 
 var Product = require('../models/product');
 
@@ -31,4 +31,4 @@ for(var i=0; i < products.length; i++){
 
 function exit() {
   mongoose.disconnect();
-}
+}*/

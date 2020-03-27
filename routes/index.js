@@ -54,12 +54,19 @@ router.get('/shopping-cart', function(req, res, next){
   var cart = new Cart(req.session.cart);
   res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
+
 router.get('/buy-now',isLoggedIn,function(req,res){
   if(!req.session.cart){
     return res.redirect('/shopping-cart')
   }
-  res.render('shop/buy-now');
+  var cart=new Cart(req.session.cart ? req.session.cart:{})
+  res.render('shop/buy-now', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+  
+  cart.removeAll()
+  req.session.cart=cart
+  
 })
+
 module.exports = router;
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){

@@ -13,6 +13,7 @@ var MongoStore=require('connect-mongo')(session)
 
 var routes = require('./routes/index');
 var UserRoutes = require('./routes/user');
+var AdminRoutes = require('./routes/admin');
 var app=express()
 
 mongoose.connect('mongodb://localhost:27017/shop',{useNewUrlParser: true});
@@ -42,6 +43,7 @@ app.use(function(req,res,next){
   res.locals.session=req.session
   next()
 })
+app.use('/admin', AdminRoutes);
 app.use('/user', UserRoutes);
 app.use('/', routes);
 

@@ -28,6 +28,10 @@ module.exports=function Cart(oldCart){
         this.totalPrice-=this.items[id].price
         delete this.items[id]
     }
+    this.removeAll=function(){
+        this.totalQty=0
+        delete this.items
+    }
     this.generateArray=function(){
         var arr=[]
         for(var id in this.items)
