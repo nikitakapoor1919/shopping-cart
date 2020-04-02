@@ -47,12 +47,7 @@ app.use('/admin', AdminRoutes);
 app.use('/user', UserRoutes);
 app.use('/', routes);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+
 app.listen(3000,()=>{
     console.log('Server Running on http://localhost:3000')
 })
